@@ -34,24 +34,19 @@ if(age <= 17) {
 
 //CALCOLO DELLE SCONTISTICHE
 
-const sumDiscMinors = (ticketCost * km) / 100 * discountMinors; //Calcolo discount Under 18
-const sumDiscOlders = (ticketCost * km) / 100 * discountOlders; //Calcolo discount Older 65
-
-if (age <= 17) {
-    console.log(`Con lo sconto applicato, risparmi ${sumDiscMinors.toFixed(2)}€`);
-} else if(age >= 65) {
-    console.log(`Con lo sconto applicato, risparmi ${sumDiscOlders.toFixed(2)}€`);
-}
+const sumDiscMinors = ((ticketCost * km) / 100) * discountMinors; //Calcolo discount Under 18
+const sumDiscOlders = ((ticketCost * km) / 100) * discountOlders; //Calcolo discount Older 65
 
 //CALCOLO DEI TOTALI PER PERSONA
 
-const sumMinors = (ticketCost * km) - sumDiscMinors;
-const sumOlders = (ticketCost * km) - sumDiscOlders;
-const sumFullPrice = (ticketCost * km);
+const sumMinors = (ticketCost * km) - sumDiscMinors; //Calcolo tot Under 18
+const sumOlders = (ticketCost * km) - sumDiscOlders; //Calcolo tot Older 65
+const sumFullPrice = (ticketCost * km); //Calcolo tot no discount
 
 if (age <= 17) {
-    console.log(`Con lo sconto applicato, il totale da pagare è ${sumDiscMinors.toFixed(2)}€`);
-} else if(age >= 65) {
-    console.log(`Con lo sconto applicato, il totale da pagare è ${sumDiscOlders.toFixed(2)}€`);
-} else ((age >= 18) && (age <= 64)) 
+    console.log(`Con lo sconto applicato, il totale da pagare è ${sumMinors.toFixed(2)}€`);
+} else if ((age >= 18) && (age <64)) {
     console.log(`Il totale da pagare è di ${sumFullPrice.toFixed(2)}€`);
+}  else {
+    console.log(`Con lo sconto applicato, il totale da pagare è ${sumOlders.toFixed(2)}€`);
+}
