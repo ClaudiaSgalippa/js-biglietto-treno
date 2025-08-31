@@ -19,18 +19,39 @@ console.log(`Il prezzo del biglietto è di ${ticketCost}€/km`)
 
 const age = prompt("Qual'è la tua età?") //Richiesta dell'età
 const km = prompt("Per quanti km vuoi viaggiare?") //Richiesta del percorrimento dei km
-console.log(`Hai ${age} anni e vuoi viaggiare per ${km}`)
+console.log(`Hai ${age} anni e vuoi viaggiare per ${km}km`)
 
 //SCONTISTICHE
 
 const discountMinors = 20; //Sconto minorenni
 const discountOlders = 40; //Sconto over 65
 
+if(age <= 17) {
+    console.log(`In quanto Under 18, hai diritto allo sconto del 20%`);
+} else if(age >= 65) {
+    console.log(`In quanto Over 65, hai diritto allo sconto del 40%`);
+}
 
+//CALCOLO DELLE SCONTISTICHE
 
+const sumDiscMinors = (ticketCost * km) / 100 * discountMinors; //Calcolo discount Under 18
+const sumDiscOlders = (ticketCost * km) / 100 * discountOlders; //Calcolo discount Older 65
 
+if (age <= 17) {
+    console.log(`Con lo sconto applicato, risparmi ${sumDiscMinors.toFixed(2)}€`);
+} else if(age >= 65) {
+    console.log(`Con lo sconto applicato, risparmi ${sumDiscOlders.toFixed(2)}€`);
+}
 
+//CALCOLO DEI TOTALI PER PERSONA
 
+const sumMinors = (ticketCost * km) - sumDiscMinors;
+const sumOlders = (ticketCost * km) - sumDiscOlders;
+const sumFullPrice = (ticketCost * km);
 
-
-
+if (age <= 17) {
+    console.log(`Con lo sconto applicato, il totale da pagare è ${sumDiscMinors.toFixed(2)}€`);
+} else if(age >= 65) {
+    console.log(`Con lo sconto applicato, il totale da pagare è ${sumDiscOlders.toFixed(2)}€`);
+} else ((age >= 18) && (age <= 64)) 
+    console.log(`Il totale da pagare è di ${sumFullPrice.toFixed(2)}€`);
